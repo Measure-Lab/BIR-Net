@@ -1,4 +1,4 @@
-# Dual Cross-current Neural Networks (BIRNet)
+# Bidirectional Information Regulation Network (BIRNet)
 
 ## Install
 
