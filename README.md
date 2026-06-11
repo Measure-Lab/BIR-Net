@@ -30,13 +30,13 @@ The directory structure is the standard layout for the torchvision [`datasets.Im
 
 ## Training and test
 ### Training
-To train DCNN: All the results were evaluated on a system with a NVIDIA GeForce RTX 4090 GPU with 24 GB of memory, running on Ubuntu20.01 (64-bit).
+To train BIR-Net: All the results were evaluated on a system with a NVIDIA GeForce RTX 4090 GPU with 24 GB of memory, running on Ubuntu20.01 (64-bit).
 
 Firstly, modify the --data-path parameter in run_train_dcnn.sh to the root path of ImageNet1k
 ```
 --data-path /path/to/imagenet/
 ```
-Then run the follow scripts to train DCNN.
+Then run the follow scripts to train BIR-Net.
 ```
 bash run_train_dcnn.sh
 ```
@@ -47,7 +47,7 @@ Modify the --data-path parameter in run_test_dcnn.sh to the root path of ImageNe
 ```
 --data-path /path/to/imagenet/
 ```
-Then test DCNN on ImageNet on a single gpu run:
+Then test BIR-Net on ImageNet on a single gpu run:
 ```
 bash run_test_dcnn.sh
 ```
@@ -76,9 +76,9 @@ For validation, comment out the code of the Inference section.
 # Proposed model evaluation on ImageNet1k
 | Model  | Parameters | MACs   | Top-1 Acc | Link                                                                                                                                                                            |
 |--------|------------|--------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| DCNN   | 52.68 M    | 11.0 G | 82.3 %    | [Google Drive](https://drive.google.com/file/d/1DcYmyYM0enILJjaBT7gEMzPFvEftiQ83/view?usp=drive_link), [Baidu Netdisk](https://pan.baidu.com/s/14VYegT_o4kHkFyskvLhr0w?pwd=51t2) |
-| DCNN-B | 88.47 M    | 16.1 G | 84.0 %    | Release later                                                                                                                                                                   |
-| DCNN-L | 206.09 M   | 42.0 G | 84.9 %    | Release later                                                                                                                                                                   |
+| BIR-Net   | 52.68 M    | 11.0 G | 82.3 %    | [Google Drive](https://drive.google.com/file/d/1DcYmyYM0enILJjaBT7gEMzPFvEftiQ83/view?usp=drive_link), [Baidu Netdisk](https://pan.baidu.com/s/14VYegT_o4kHkFyskvLhr0w?pwd=51t2) |
+| BIR-Net-B | 88.47 M    | 16.1 G | 84.0 %    | Release later                                                                                                                                                                   |
+| BIR-Net-L | 206.09 M   | 42.0 G | 84.9 %    | Release later                                                                                                                                                                   |
 
 # DCNN Test Results on fine-grained benchmarks
 | Datasets          | Top-1 Acc | Top-5 Acc | Link |
