@@ -1,4 +1,4 @@
-# Dual Cross-current Neural Networks (DCNN)
+# Bidirectional Information Regulation Network (BIR-Net)
 
 ## Install
 
