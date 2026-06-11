@@ -22,12 +22,12 @@ from engine import train_one_epoch, evaluate
 from samplers import RASampler
 
 def get_args_parser():
-    parser = argparse.ArgumentParser('DCNN training and evaluation script', add_help=False)
+    parser = argparse.ArgumentParser('BIRNet training and evaluation script', add_help=False)
     parser.add_argument('--batch-size', default=64, type=int)
     parser.add_argument('--epochs', default=300, type=int)
 
     # Model parameters
-    parser.add_argument('--model', default='DCU_SC_SA_MAIN', type=str, metavar='MODEL',
+    parser.add_argument('--model', default='BIRU_SC_SA_MAIN', type=str, metavar='MODEL',
                         help='Name of model to train')
     parser.add_argument('--input-size', default=224, type=int, help='images input size')
 
@@ -403,7 +403,7 @@ def main(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('DCNN training and evaluation script', parents=[get_args_parser()])
+    parser = argparse.ArgumentParser('BIRNet training and evaluation script', parents=[get_args_parser()])
     args = parser.parse_args()
     if args.output_dir:
         Path(args.output_dir).mkdir(parents=True, exist_ok=True)

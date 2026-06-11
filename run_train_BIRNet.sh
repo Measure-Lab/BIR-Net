@@ -4,9 +4,9 @@
 # Train
 export CUDA_VISIBLE_DEVICES=0
 
-OUTPUT='./output/DCNN'
+OUTPUT='./output/BIRNet'
 python -m torch.distributed.launch --master_port 50137 --nproc_per_node=1 main.py \
-       --model DCU_SC_SA_MAIN \
+       --model BIRU_SC_SA_MAIN \
        --data-set IMNET \
        --batch-size 128 \
        --lr 0.001 \

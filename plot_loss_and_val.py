@@ -1,7 +1,7 @@
 import json
 import matplotlib.pyplot as plt
 
-filepath = './output/DCNN/log.txt'
+filepath = './output/BIRNet/log.txt'
 train_loss_list = []
 test_loss_list = []
 val_list = []

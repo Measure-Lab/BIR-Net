@@ -153,13 +153,13 @@ class SCBlock(nn.Module):
             return x
 
 
-class DCUDown(nn.Module):
+class BIRUDown(nn.Module):
     '''
-    Construct (DCU + Down) bridge module
+    Construct (BIRU + Down) bridge module
     '''
     def __init__(self, inplanes, outplanes, pre_outplanes, dw_stride, act_layer=nn.GELU,
                  norm_layer=partial(nn.LayerNorm, eps=1e-6)):
-        super(DCUDown, self).__init__()
+        super(BIRUDown, self).__init__()
         self.dw_stride = dw_stride
 
         self.conv_proj = nn.Conv2d(inplanes, outplanes, kernel_size=1, stride=1, padding=0)
@@ -195,13 +195,13 @@ class DCUDown(nn.Module):
         return x, cur_x
 
 
-class DCUUp(nn.Module):
+class BIRUUp(nn.Module):
     '''
-    Construct (DCU + Up) bridge module
+    Construct (BIRU + Up) bridge module
     '''
     def __init__(self, inplanes, outplanes, pre_outplanes, up_stride, act_layer=nn.ReLU,
                  norm_layer=partial(nn.BatchNorm2d, eps=1e-6), ):
-        super(DCUUp, self).__init__()
+        super(BIRUUp, self).__init__()
 
         self.up_stride = up_stride
         self.conv_proj = nn.Conv2d(inplanes, outplanes, kernel_size=1, stride=1, padding=0)
@@ -316,14 +316,14 @@ class ConvTransBlock(nn.Module):
             pre_down_outplanes = 0
         else:
             pre_down_outplanes = embed_dim
-        self.squeeze_block = DCUDown(inplanes=outplanes // expansion, outplanes=embed_dim,
+        self.squeeze_block = BIRUDown(inplanes=outplanes // expansion, outplanes=embed_dim,
                                      pre_outplanes=pre_down_outplanes, dw_stride=dw_stride)
 
         if cur_stage == 1:
             pre_up_outplanes = 0
         else:
             pre_up_outplanes = outplanes // expansion
-        self.expand_block = DCUUp(inplanes=embed_dim, outplanes=outplanes // expansion, pre_outplanes=pre_up_outplanes,
+        self.expand_block = BIRUUp(inplanes=embed_dim, outplanes=outplanes // expansion, pre_outplanes=pre_up_outplanes,
                                   up_stride=dw_stride)
 
         self.trans_block = Block(
@@ -352,10 +352,7 @@ class ConvTransBlock(nn.Module):
         return x, x_t, x_down, x_up
 
 
-class DCU_SC_SA(nn.Module):
-    '''
-    Construct DCNN
-    '''
+class BIRU_SC_SA(nn.Module):
     def __init__(self, patch_size=16, in_chans=3, num_classes=1000, base_channel=64, channel_ratio=4, num_med_block=0,
                  embed_dim=768, depth=12, num_heads=12, mlp_ratio=4., qkv_bias=False, qk_scale=None,
                  drop_rate=0., attn_drop_rate=0., drop_path_rate=0., pretrained_cfg=None, pretrained_cfg_overlay=None):
